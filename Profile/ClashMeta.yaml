@@ -1,0 +1,225 @@
+# Clash Meta 配置
+# 日期：2024-06-13
+# 配置作者：https://github.com/Amnesiash/
+# 适用版本：所有使用 Clash Meta 核心的程序
+
+
+mixed-port: 7890      # 混合端口 HTTP和SOCKS5用一个端口
+port: 7891
+socks-port: 7892
+redir-port: 7893
+tproxy-port: 7894
+
+unified-delay: true
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+allow-lan: true       # 允许局域网的连接（可用来共享代理）
+mode: rule            # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
+log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
+ipv6: true            # 开启 IPv6 总开关,关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+udp: true
+
+external-controller: 0.0.0.0:9090   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
+secret: 'clashpassword'
+
+geox-url:
+  geoip: 'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat'
+  geosite: 'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat'
+  mmdb: 'https://gitlab.com/Masaiki/GeoIP2-CN/-/raw/release/Country.mmdb'
+  asn: 'https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb'
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+
+  skip-domain:
+    - Mijia Cloud
+
+
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-route: true
+  auto-detect-interface: true
+
+dns:
+  enable: true              # 关闭将使用系统 DNS
+  listen: 0.0.0.0:1053      # DNS监听地址
+  ipv6: true                # IPV6解析开关；如果为false，将返回ipv6结果为空
+  enhanced-mode: fake-ip    # 模式：redir-host或fake-ip
+  fake-ip-range: 28.0.0.1/8 # Fake-IP解析地址池
+  fake-ip-filter:           # fake ip 白名单列表'以下地址不会下发fakeip映射用于连接
+    - "*.lan"
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - "+.stun.*.*.*.*.*"
+    - "lens.l.google.com"
+    - "localhost.ptlogin2.qq.com"
+    - "+.stun.playstation.net"
+    - "xbox.*.*.microsoft.com"
+    - "*.*.xboxlive.com"
+    - "*.msftncsi.com"
+    - "*.msftconnecttest.com"
+    - "*.mcdn.bilivideo.cn"
+    - "WORKGROUP"
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+  nameserver:               # 默认DNS服务器，支持udp/tcp/dot/doh/doq
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+
+# 锚点 - 优选节点订阅参数 [每天更新一次订阅优选节点，每 300 秒一次健康检查]
+NodeParam: &NodeParam {type: http, interval: 43200, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 300}}
+
+# 锚点 - 优选节点订阅
+proxy-providers:
+  # Sub:
+  #   <<: *NodeParam
+  #   url: 
+  #   path: ./proxy/Sub.yaml
+
+# 锚点 - 订阅组应用
+UseProxy: &UseProxy [Sub]
+
+# 锚点 - 优选节点筛选组
+FilterHK: &FilterHK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterTW: &FilterTW '^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterJP: &FilterJP '^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+# 锚点 - 优选参数 [每 300 秒一次惰性健康检查，容差 100ms，超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+UrlTest: &UrlTest {type: url-test, interval: 300, tolerance: 100, lazy: true, url: 'http://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, use: *UseProxy}
+# 锚点 - 规则参数 [每 12 小时更新一次订阅规则，更新规则时使用直连优选]
+RuleSet: &RuleSet {type: http, behavior: classical, interval: 21600, format: text, proxy: DIRECT}
+
+# 策略组
+proxy-groups:
+  - {name: 🚀 节点选择, type: select, use: *UseProxy}
+  - {name: 🌍 全球代理, type: select, proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选, 🇯🇵 日本优选, 🇸🇬 狮城优选, 🇺🇲 美国优选]}
+  - {name: 🎨 FIGMA, type: select, proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选, 🇯🇵 日本优选, 🇸🇬 狮城优选, 🇺🇲 美国优选]}
+  - {name: 🌟 AIGC, type: select, proxies: [🇸🇬 狮城优选, 🇯🇵 日本优选, 🇺🇲 美国优选, 🚀 节点选择]}
+  - {name: 🎬 港台番剧, type: select, proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选]}
+  - {name: 🎬 国外媒体, type: select, proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选, 🇯🇵 日本优选, 🇸🇬 狮城优选, 🇺🇲 美国优选]}
+  - {name: 🍎 苹果服务, type: select, proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选, 🇯🇵 日本优选, 🇸🇬 狮城优选, 🇺🇲 美国优选]}
+  - {name: 🗑️ 兜底策略, type: select, proxies: [DIRECT, 🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港优选, 🇨🇳 台湾优选, 🇯🇵 日本优选, 🇸🇬 狮城优选, 🇺🇲 美国优选]}
+
+# 最低延迟优选策略组
+  - {name: ♻️ 自动选择, <<: *UrlTest}
+  - {name: 🇭🇰 香港优选, <<: *UrlTest, filter: *FilterHK}
+  - {name: 🇨🇳 台湾优选, <<: *UrlTest, filter: *FilterTW}  
+  - {name: 🇯🇵 日本优选, <<: *UrlTest, filter: *FilterJP}
+  - {name: 🇸🇬 狮城优选, <<: *UrlTest, filter: *FilterSG}
+  - {name: 🇺🇲 美国优选, <<: *UrlTest, filter: *FilterUS}
+
+
+# 订阅规则
+rule-providers:
+  直连修正: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Direct+.list
+    path: ./ruleset/Direct+.list
+
+  代理修正: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Proxy+.list
+    path: ./ruleset/Proxy+.list
+
+  LAN: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/LAN.list
+    path: ./ruleset/LAN.list
+  
+  微信: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/WeChat.list
+    path: ./ruleset/WeChat.list
+
+  Telegram: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Telegram.list
+    path: ./ruleset/Telegram.list
+
+  AI:
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/AI.list
+    path: ./ruleset/AI.list
+  
+  港台番剧:
+    <<: *RuleSet
+    url:  https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/StreamingCN.list
+    path: ./ruleset/StreamingCN.list
+
+  国外媒体: 
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Streaming!CN.list
+    path: ./ruleset/Streaming!CN.list
+    
+  苹果服务:
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Apple.list
+    path: ./ruleset/Apple.list
+
+  代理列表:
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Proxy.list
+    path: ./ruleset/Proxy.list
+
+  直连列表:
+    <<: *RuleSet
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Direct.list
+    path: ./ruleset/Direct.list
+
+# 规则指向
+rules:
+  # 本地规则
+  - PROCESS-NAME,OneDrive,DIRECT
+  - DOMAIN-SUFFIX,figma.com,🎨 FIGMA
+
+  # 订阅规则
+  - RULE-SET,直连修正,DIRECT
+  - RULE-SET,代理修正,🌍 全球代理
+  - RULE-SET,Telegram,🌍 全球代理
+  - RULE-SET,AI,🌟 AIGC
+  - RULE-SET,港台番剧,🎬 港台番剧
+  - RULE-SET,国外媒体,🎬 国外媒体
+  - RULE-SET,苹果服务,🍎 苹果服务
+  - RULE-SET,代理列表,🌍 全球代理
+  - RULE-SET,微信,DIRECT
+  - RULE-SET,直连列表,DIRECT
+  - RULE-SET,LAN,DIRECT
+
+  # GeoIP China
+  - GEOIP,CN,DIRECT
+  - MATCH,🗑️ 兜底策略
+
+
+
