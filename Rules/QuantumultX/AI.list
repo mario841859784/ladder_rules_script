@@ -28,6 +28,7 @@ HOST,location.microsoft.com,Copilot
 HOST,makersuite.google.com
 HOST,o33249.ingest.sentry.io
 HOST,odc.officeapps.live.com,Copilot
+HOST,openai-api.arkoselabs.com
 HOST,openai-api.arkoselabs.com,Copilot
 HOST,openaiapi-site.azureedge.net
 HOST,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
@@ -92,7 +93,9 @@ HOST-SUFFIX,observeit.net
 HOST-SUFFIX,observeit.net,Copilot
 HOST-SUFFIX,openai.com
 HOST-SUFFIX,openai.com,Copilot
+HOST-SUFFIX,openaiapi-site.azureedge.net
 HOST-SUFFIX,openaiapi-site.azureedge.net,Copilot
+HOST-SUFFIX,openaicom.imgix.net
 HOST-SUFFIX,openaicom.imgix.net,Copilot
 HOST-SUFFIX,segment.io
 HOST-SUFFIX,segment.io,Copilot

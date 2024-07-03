@@ -33,6 +33,7 @@ HOST,update.googleapis.com
 HOST,vd.l.qq.com
 HOST,vi.l.qq.com
 HOST,yacd.haishan.me
+HOST-SUFFIX,arco.design
 HOST-SUFFIX,blog.google
 HOST-SUFFIX,cloudinary.com
 HOST-SUFFIX,dizhensubao.getui.com
