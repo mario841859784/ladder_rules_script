@@ -1,4 +1,4 @@
-#规则数量:2301
+#规则数量:2300
 #不支持的规则数量:10
 #已排除的规则数量:0
 #不支持的规则:
@@ -20,7 +20,6 @@ DOMAIN,api.okzy.tv
 DOMAIN,apm-misaka.biliapi.net
 DOMAIN,apple.comscoreresearch.com
 DOMAIN,bcbolt446c5271-a.akamaihd.net
-DOMAIN,cache.video.iqiyi.com
 DOMAIN,chuangcachecdnoversea-tw.inter.ptqy.gitv.tv
 DOMAIN,cs428.wpc.edgecastcdn.net
 DOMAIN,dashasiafox.akamaized.netflix
