@@ -1,4 +1,4 @@
-#规则数量:116
+#规则数量:117
 #不支持的规则数量:0
 #已排除的规则数量:0
 
@@ -91,6 +91,7 @@ DOMAIN-SUFFIX,intercomcdn.com
 DOMAIN-SUFFIX,intercomcdn.com
 DOMAIN-SUFFIX,launchdarkly.com
 DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
