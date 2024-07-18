@@ -255,7 +255,7 @@ jobs:
         done
 
     # 去重排序 Clash
-    - name: Remove Clash rules duplicates and lines
+    - name: Remove Clash rules duplicates 和 lines
       run: |
         cd ladder-repo/Rules/Clash
         shopt -s nullglob  # 避免没有匹配的文件时保留原始通配符
@@ -286,80 +286,8 @@ jobs:
           fi
         done
 
-######         
-    # 加载规则:Loon 🧸 
-    - name: Download files to Loon
-      run: |
-        mkdir -p ladder-repo/Rules/Loon
-        # 直连修正
-        curl -L -o ladder-repo/Rules/Loon/Direct+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Direct+.list/_end_/Direct%2B.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 代理修正
-        curl -L -o ladder-repo/Rules/Loon/Proxy+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Proxy+.list/_end_/Proxy%2B.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 代理列表
-        curl -L -o ladder-repo/Rules/Loon/Proxy.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Proxy.list/_end_/Proxy.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 直连列表
-        curl -L -o ladder-repo/Rules/Loon/Direct.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Direct.list/_end_/Direct.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 本地地址和路由器直连域名
-        curl -L -o ladder-repo/Rules/Loon/LAN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/LAN.list/_end_/LAN.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 流媒体
-        curl -L -o ladder-repo/Rules/Loon/Streaming!CN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Streaming!CN.list/_end_/Streaming!CN.list?type=rule-set&target=loon-rule-set&del=true"
-
-        curl -L -o ladder-repo/Rules/Loon/StreamingCN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/StreamingCN.list/_end_/Streaming!CN.list?type=rule-set&target=loon-rule-set&del=true"
-
-        curl -L -o ladder-repo/Rules/Loon/BiliBili.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/BiliBili.list/_end_/BiliBili.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 苹果服务
-        curl -L -o ladder-repo/Rules/Loon/Apple.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Apple.list/_end_/Apple.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # AI
-        curl -L -o ladder-repo/Rules/Loon/AI.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/AI.list/_end_/AI.list?type=rule-set&target=loon-rule-set&del=true"
-
-        # 广告拦截
-        curl -L -o ladder-repo/Rules/Loon/Reject.list "https://adrules.top/adrules.list"
-
-###### 
-    # 加载规则:Shadowrocket 🧸 
-    - name: Download files to Shadowrocket
-      run: |
-        mkdir -p ladder-repo/Rules/Shadowrocket
-        # 直连修正
-        curl -L -o ladder-repo/Rules/Shadowrocket/Direct+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Direct+.list/_end_/Direct%2B.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 代理修正
-        curl -L -o ladder-repo/Rules/Shadowrocket/Proxy+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Proxy+.list/_end_/Proxy%2B.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 代理列表
-        curl -L -o ladder-repo/Rules/Shadowrocket/Proxy.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Proxy.list/_end_/Proxy.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 直连列表
-        curl -L -o ladder-repo/Rules/Shadowrocket/Direct.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Direct.list/_end_/Direct.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 本地地址和路由器直连域名
-        curl -L -o ladder-repo/Rules/Shadowrocket/LAN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/LAN.list/_end_/LAN.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 流媒体
-        curl -L -o ladder-repo/Rules/Shadowrocket/Streaming!CN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Streaming!CN.list/_end_/Streaming!CN.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        curl -L -o ladder-repo/Rules/Shadowrocket/StreamingCN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/StreamingCN.list/_end_/Streaming!CN.list?type=rule-set&target=loon-rule-set&del=true"
-
-        curl -L -o ladder-repo/Rules/Shadowrocket/BiliBili.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/BiliBili.list/_end_/BiliBili.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 苹果服务
-        curl -L -o ladder-repo/Rules/Shadowrocket/Apple.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/Apple.list/_end_/Apple.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # AI
-        curl -L -o ladder-repo/Rules/Shadowrocket/AI.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/QuantumultX/AI.list/_end_/AI.list?type=rule-set&target=shadowrocket-rule-set&del=true"
-
-        # 广告拦截
-        curl -L -o ladder-repo/Rules/Shadowrocket/Reject.list "https://adrules.top/adrules-surge.conf"        
-
 ######
-    - name: Add and Commits
+    - name: Add 和 Commits
       run: |
         cd ladder-repo
         if [[ -n $(git status -s) ]]; then
