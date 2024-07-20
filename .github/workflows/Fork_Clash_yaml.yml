@@ -1,0 +1,78 @@
+# 2024-05-20
+
+name: Fork & Edit
+
+on:
+  workflow_dispatch:
+  schedule:
+    # "早上12点与中午12点运行"
+    - cron: "0 8,20 * * *"
+
+jobs:
+  Fork-FLITER-list:
+    runs-on: ubuntu-latest
+    env:
+      TZ: 'Asia/Shanghai'
+    
+    steps: 
+    - name: Checkout target repository
+      uses: actions/checkout@v4.1.0
+      with:
+        repository: Amnesiash/ladder_rules_script
+        path: ladder-repo
+
+######  
+    # 加载并合并规则:Clash YAML 🧸
+    - name: Download Clash Rules
+      run: |
+        mkdir -p ladder-repo/Rules/Clash/yaml
+        # 直连修正
+        curl -L -o ladder-repo/Rules/Clash/yaml/Direct+.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Direct%2B.list/_end_/Direct%252B.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # 代理修正
+        curl -L -o ladder-repo/Rules/Clash/yaml/Proxy+.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Proxy%2B.list/_end_/Proxy%252B.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # 代理列表
+        curl -L -o ladder-repo/Rules/Clash/yaml/Proxy.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Proxy.list/_end_/Proxy.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # 直连列表
+        curl -L -o ladder-repo/Rules/Clash/yaml/Direct.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Direct.list/_end_/Direct.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # 本地地址和路由器直连域名
+        curl -L -o ladder-repo/Rules/Clash/yaml/LAN.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list/_end_/Lan.list?type=rule-set&target=stash-rule-set&del=true" 
+
+        # 流媒体
+        curl -L -o ladder-repo/Rules/Clash/yaml/Streaming!CN.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list/_end_/!CN.list?type=rule-set&target=stash-rule-set&del=true"
+        curl -L -o ladder-repo/Rules/Clash/yaml/StreamingCN.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list/_end_/CN.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # 苹果服务
+        curl -L -o ladder-repo/Rules/Clash/yaml/Apple.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Apple/Apple.list/_end_/Apple.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # AI
+        curl -L -o ladder-repo/Rules/Clash/yaml/AI.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/AI.list/_end_/AI.list?type=rule-set&target=stash-rule-set&del=true"
+
+        # WeChat
+        curl -L -o ladder-repo/Rules/Clash/yaml/WeChat.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/WeChat.list/_end_/WeChat.list?type=rule-set&target=stash-rule-set&del=true"  
+
+        # Telegram
+        curl -L -o ladder-repo/Rules/Clash/yaml/Telegram.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Telegram.list/_end_/Telegram.list?type=rule-set&target=stash-rule-set&del=true"  
+
+######
+    - name: Add 和 Commits
+      run: |
+        cd ladder-repo
+        if [[ -n $(git status -s) ]]; then
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
+          git push origin HEAD
+        else
+          echo "No changes to commit."
+        fi
+
+    - name: Cleanup Workflow
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 0
+        keep_minimum_runs: 2
