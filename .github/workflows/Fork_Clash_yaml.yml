@@ -1,6 +1,6 @@
 # 2024-05-20
 
-name: Fork & Edit
+name: Fork Clash yaml
 
 on:
   workflow_dispatch:
