@@ -1,5 +1,5 @@
 # 一些未被代理匹配到的网址
-# UPDATED: 2024-05-11
+# UPDATED: 2024-07-22
 
 
 # > 分流
@@ -15,6 +15,9 @@ DOMAIN-SUFFIX,huggingface.co
 DOMAIN-SUFFIX,ptsearch.info
 DOMAIN-SUFFIX,wallhaven.cc
 DOMAIN-SUFFIX,alpacaml.com
+
+# > 电商
+DOMAIN-SUFFIX,temu.com
 
 # > 机场
 DOMAIN-SUFFIX,ununetwork.top
