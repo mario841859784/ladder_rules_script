@@ -1,4 +1,4 @@
-#规则数量:41
+#规则数量:42
 #不支持的规则数量:0
 #已排除的规则数量:0
 
@@ -35,6 +35,7 @@ payload:
   - DOMAIN-SUFFIX,rifabu.me 
   - DOMAIN-SUFFIX,surfshark.com
   - DOMAIN-SUFFIX,surfsharkdns.com
+  - DOMAIN-SUFFIX,temu.com
   - DOMAIN-SUFFIX,ununetwork.top
   - DOMAIN-SUFFIX,v2rayssr.com
   - DOMAIN-SUFFIX,vpnunlimited.com
