@@ -1,5 +1,5 @@
 # Clash Premium 配置
-# 日期：2024-07-20
+# 日期：2024-07-23
 # 配置作者：https://github.com/Amnesiash/
 # 适用版本：所有使用 Clash Premium 核心的程序
 
@@ -18,7 +18,7 @@ dns:
   enable: true             # 关闭将使用系统 DNS
   ipv6: false              # IPV6解析开关；如果为false，将返回ipv6结果为空
   enhanced-mode: fake-ip   # 模式：redir-host或fake-ip
-  listen: 0.0.0.0:1053       # DNS监听地址
+  listen: 0.0.0.0:53       # DNS监听地址
   fake-ip-range: 28.0.0.1/8    # Fake-IP解析地址池
   fake-ip-filter:          # fake ip 白名单列表'以下地址不会下发fakeip映射用于连接
     - "*.lan"
@@ -37,12 +37,19 @@ dns:
     - "WORKGROUP"
   default-nameserver:
     - 223.5.5.5
-    - 223.6.6.6
+    - 1.0.0.1
   nameserver:               # 默认DNS服务器，支持udp/tcp/dot/doh/doq
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
+  nameserver-policy:
+    # > Google Dl
+    'dl.google.com': 119.29.29.29
+    'dl.l.google.com': 119.29.29.29
+    'update.googleapis.com': 119.29.29.29
+    # > PlayStation
+    '*.dl.playstation.net': 119.29.29.29
 
 # 锚点 - 优选订阅参数 [每天更新一次订阅优选，每 300 秒一次健康检查]
 NodeParam: &NodeParam {type: http, interval: 43200, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 300}}
