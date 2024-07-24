@@ -31,7 +31,7 @@ secret: 'clashpassword'
 geox-url:
   geoip: 'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat'
   geosite: 'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat'
-  mmdb: 'https://gitlab.com/Masaiki/GeoIP2-CN/-/raw/release/Country.mmdb'
+  mmdb: 'https://raw.githubusercontent.com/Masaiki/GeoIP2-CN/release/Country.mmdb'
   asn: 'https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb'
 
 profile:
@@ -89,12 +89,19 @@ dns:
     - "WORKGROUP"
   default-nameserver:
     - 223.5.5.5
-    - 223.6.6.6
+    - 1.0.0.1
   nameserver:               # 默认DNS服务器，支持udp/tcp/dot/doh/doq
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
+  nameserver-policy:
+    # > Google Dl
+    'dl.google.com': 119.29.29.29
+    'dl.l.google.com': 119.29.29.29
+    'update.googleapis.com': 119.29.29.29
+    # > PlayStation
+    '*.dl.playstation.net': 119.29.29.29
 
 # 锚点 - 优选节点订阅参数 [每天更新一次订阅优选节点，每 300 秒一次健康检查]
 NodeParam: &NodeParam {type: http, interval: 43200, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 300}}
@@ -119,7 +126,7 @@ FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|�
 # 锚点 - 优选参数 [每 300 秒一次惰性健康检查，容差 100ms，超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
 UrlTest: &UrlTest {type: url-test, interval: 300, tolerance: 100, lazy: true, url: 'http://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, use: *UseProxy}
 # 锚点 - 规则参数 [每 12 小时更新一次订阅规则，更新规则时使用直连优选]
-RuleSet: &RuleSet {type: http, behavior: classical, interval: 21600, format: text, proxy: DIRECT}
+RuleSet: &RuleSet {type: http, behavior: classical, interval: 21600, format: yaml, proxy: DIRECT}
 
 # 策略组
 proxy-groups:
@@ -145,58 +152,58 @@ proxy-groups:
 rule-providers:
   直连修正: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Direct+.list
-    path: ./ruleset/Direct+.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Direct+.yaml
+    path: ./ruleset/Direct+.yaml
 
   代理修正: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Proxy+.list
-    path: ./ruleset/Proxy+.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Proxy+.yaml
+    path: ./ruleset/Proxy+.yaml
 
   LAN: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/LAN.list
-    path: ./ruleset/LAN.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/LAN.yaml
+    path: ./ruleset/LAN.yaml
   
   微信: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/WeChat.list
-    path: ./ruleset/WeChat.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/WeChat.yaml
+    path: ./ruleset/WeChat.yaml
 
   Telegram: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Telegram.list
-    path: ./ruleset/Telegram.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Telegram.yaml
+    path: ./ruleset/Telegram.yaml
 
   AI:
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/AI.list
-    path: ./ruleset/AI.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/AI.yaml
+    path: ./ruleset/AI.yaml
   
   港台番剧:
     <<: *RuleSet
-    url:  https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/StreamingCN.list
-    path: ./ruleset/StreamingCN.list
+    url:  https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/StreamingCN.yaml
+    path: ./ruleset/StreamingCN.yaml
 
   国外媒体: 
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Streaming!CN.list
-    path: ./ruleset/Streaming!CN.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Streaming!CN.yaml
+    path: ./ruleset/Streaming!CN.yaml
     
   苹果服务:
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Apple.list
-    path: ./ruleset/Apple.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Apple.yaml
+    path: ./ruleset/Apple.yaml
 
   代理列表:
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Proxy.list
-    path: ./ruleset/Proxy.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Proxy.yaml
+    path: ./ruleset/Proxy.yaml
 
   直连列表:
     <<: *RuleSet
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/Direct.list
-    path: ./ruleset/Direct.list
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Direct.yaml
+    path: ./ruleset/Direct.yaml
 
 # 规则指向
 rules:
