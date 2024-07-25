@@ -19,8 +19,8 @@ dns:
   ipv6: false              # IPV6解析开关；如果为false，将返回ipv6结果为空
   enhanced-mode: fake-ip   # 模式：redir-host或fake-ip
   listen: 0.0.0.0:53       # DNS监听地址
-  fake-ip-range: 28.0.0.1/8    # Fake-IP解析地址池
-  fake-ip-filter:          # fake ip 白名单列表'以下地址不会下发fakeip映射用于连接
+  fake-ip-range: 198.18.0.1/16    # Fake-IP解析地址池
+  fake-ip-filter:           # fake ip 白名单列表'以下地址不会下发fakeip映射用于连接
     - "*.lan"
     - "+.stun.*.*"
     - "+.stun.*.*.*"
@@ -35,21 +35,9 @@ dns:
     - "*.msftconnecttest.com"
     - "*.mcdn.bilivideo.cn"
     - "WORKGROUP"
-  default-nameserver:
-    - 223.5.5.5
-    - 1.0.0.1
   nameserver:               # 默认DNS服务器，支持udp/tcp/dot/doh/doq
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-  nameserver-policy:
-    # > Google Dl
-    'dl.google.com': 119.29.29.29
-    'dl.l.google.com': 119.29.29.29
-    'update.googleapis.com': 119.29.29.29
-    # > PlayStation
-    '*.dl.playstation.net': 119.29.29.29
 
 # 锚点 - 优选订阅参数 [每天更新一次订阅优选，每 300 秒一次健康检查]
 NodeParam: &NodeParam {type: http, interval: 43200, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 300}}
