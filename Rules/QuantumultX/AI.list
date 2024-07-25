@@ -12,9 +12,11 @@ HOST,bard.google.com
 HOST,browser-intake-datadoghq.com
 HOST,browser-intake-datadoghq.com,Copilot
 HOST,cdn.usefathom.com,Claude
+HOST,chat.mistral.ai
 HOST,chat.openai.com.cdn.cloudflare.net
 HOST,chat.openai.com.cdn.cloudflare.net,Copilot
 HOST,chatgpt.livekit.cloud
+HOST,console.mistral.ai
 HOST,copilot-proxy.githubusercontent.com
 HOST,copilot.microsoft.com
 HOST,copilot.microsoft.com,Copilot
@@ -98,6 +100,7 @@ HOST-SUFFIX,openaiapi-site.azureedge.net
 HOST-SUFFIX,openaiapi-site.azureedge.net,Copilot
 HOST-SUFFIX,openaicom.imgix.net
 HOST-SUFFIX,openaicom.imgix.net,Copilot
+HOST-SUFFIX,perplexity.ai
 HOST-SUFFIX,segment.io
 HOST-SUFFIX,segment.io,Copilot
 HOST-SUFFIX,sentry.io
