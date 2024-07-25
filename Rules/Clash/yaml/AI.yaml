@@ -1,4 +1,4 @@
-#规则数量:81
+#规则数量:84
 #不支持的规则数量:0
 #已排除的规则数量:0
 
@@ -17,8 +17,10 @@ payload:
   - DOMAIN,bard.google.com
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,cdn.usefathom.com
+  - DOMAIN,chat.mistral.ai
   - DOMAIN,chat.openai.com.cdn.cloudflare.net
   - DOMAIN,chatgpt.livekit.cloud
+  - DOMAIN,console.mistral.ai
   - DOMAIN,copilot-proxy.githubusercontent.com
   - DOMAIN,copilot.microsoft.com
   - DOMAIN,gateway.bingviz.microsoft.net
@@ -75,6 +77,7 @@ payload:
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
   - DOMAIN-SUFFIX,openaicom.imgix.net
+  - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,segment.io
   - DOMAIN-SUFFIX,sentry.io
   - DOMAIN-SUFFIX,stripe.com
