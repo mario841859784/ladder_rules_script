@@ -1,6 +1,6 @@
-# 2024-05-20
+# 2024-08-15
 
-name: Fork Clash yaml
+name: Fork Clash & Loon
 
 on:
   workflow_dispatch:
@@ -59,6 +59,45 @@ jobs:
 
         # Telegram
         curl -L -o ladder-repo/Rules/Clash/yaml/Telegram.yaml "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Telegram.list/_end_/Telegram.list?type=rule-set&target=stash-rule-set&del=true"  
+
+######  
+    # 加载并合并规则:Loon 🧸
+    - name: Download Loon Rules
+      run: |
+        mkdir -p ladder-repo/Rules/Loon
+        # 网络解限
+        curl -L -o ladder-repo/Rules/Loon/unlockblock.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Customized/unlockblock.list/_end_/unlockblock.list?type=rule-set&target=loon-rule-set&del=true"
+        
+        # 直连修正
+        curl -L -o ladder-repo/Rules/Loon/Direct+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Direct%2B.list/_end_/Direct%252B.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # 代理修正
+        curl -L -o ladder-repo/Rules/Loon/Proxy+.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Proxy%2B.list/_end_/Proxy%252B.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # 代理列表
+        curl -L -o ladder-repo/Rules/Loon/Proxy.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Proxy.list/_end_/Proxy.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # 直连列表
+        curl -L -o ladder-repo/Rules/Loon/Direct.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/Direct.list/_end_/Direct.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # 本地地址和路由器直连域名
+        curl -L -o ladder-repo/Rules/Loon/LAN.list "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Lan/Lan.list" 
+
+        # 流媒体
+        curl -L -o ladder-repo/Rules/Loon/Streaming!CN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/!CN.list/_end_/!CN.list?type=rule-set&target=loon-rule-set&del=true"
+        curl -L -o ladder-repo/Rules/Loon/StreamingCN.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Streaming/CN.list/_end_/CN.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # 苹果服务
+        curl -L -o ladder-repo/Rules/Loon/Apple.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Apple/Apple.list/_end_/Apple.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # AI
+        curl -L -o ladder-repo/Rules/Loon/AI.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/AI.list/_end_/AI.list?type=rule-set&target=loon-rule-set&del=true"
+
+        # WeChat
+        curl -L -o ladder-repo/Rules/Loon/WeChat.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/WeChat.list/_end_/WeChat.list?type=rule-set&target=loon-rule-set&del=true"  
+
+        # Telegram
+        curl -L -o ladder-repo/Rules/Loon/Telegram.list "https://scripthub-lp861i47.b4a.run/file/_start_/https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Telegram.list/_end_/Telegram.list?type=rule-set&target=loon-rule-set&del=true"  
 
 ######
     - name: Add 和 Commits
