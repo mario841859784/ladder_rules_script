@@ -17,6 +17,7 @@ HOST,cdn.statically.io
 HOST,cloud-cdn-digitalocean-com.global.ssl.fastly.net
 HOST,cloud.oracle.com
 HOST,clubhouse.pubnubapi.com
+HOST,community.oneplus.com
 HOST,d19eijqb5qll1w.cloudfront.net
 HOST,d1e00ek4ebabms.cloudfront.net
 HOST,d3c33hcgiwev3.cloudfront.net
@@ -27,6 +28,7 @@ HOST,github.global.ssl.fastly.net
 HOST,itunes.apple.com
 HOST,lab.skk.moe
 HOST,lookup-api.apple.com
+HOST,new.c.mi.com
 HOST,news-assets.apple.com
 HOST,news-client-search.apple.com
 HOST,news-client.apple.com
@@ -670,6 +672,7 @@ HOST-SUFFIX,bnews.co
 HOST-SUFFIX,bnext.com.tw
 HOST-SUFFIX,bnn.co
 HOST-SUFFIX,bnrmetal.com
+HOST-SUFFIX,bntrace.com
 HOST-SUFFIX,boardreader.com
 HOST-SUFFIX,bod.asia
 HOST-SUFFIX,bodog88.com
@@ -6051,6 +6054,7 @@ HOST-SUFFIX,yigeni.com
 HOST-SUFFIX,yilubbs.com
 HOST-SUFFIX,yimg.com
 HOST-SUFFIX,yingsuoss.com
+HOST-SUFFIX,yingwangtech.cloud
 HOST-SUFFIX,yinlei.org
 HOST-SUFFIX,yipub.com
 HOST-SUFFIX,yizhihongxing.com

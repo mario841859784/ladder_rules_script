@@ -17,6 +17,7 @@ DOMAIN,cdn.statically.io
 DOMAIN,cloud-cdn-digitalocean-com.global.ssl.fastly.net
 DOMAIN,cloud.oracle.com
 DOMAIN,clubhouse.pubnubapi.com
+DOMAIN,community.oneplus.com
 DOMAIN,d19eijqb5qll1w.cloudfront.net
 DOMAIN,d1e00ek4ebabms.cloudfront.net
 DOMAIN,d3c33hcgiwev3.cloudfront.net
@@ -27,6 +28,7 @@ DOMAIN,github.global.ssl.fastly.net
 DOMAIN,itunes.apple.com
 DOMAIN,lab.skk.moe
 DOMAIN,lookup-api.apple.com 
+DOMAIN,new.c.mi.com
 DOMAIN,news-assets.apple.com
 DOMAIN,news-client-search.apple.com
 DOMAIN,news-client.apple.com
@@ -671,6 +673,7 @@ DOMAIN-SUFFIX,bnews.co
 DOMAIN-SUFFIX,bnext.com.tw
 DOMAIN-SUFFIX,bnn.co
 DOMAIN-SUFFIX,bnrmetal.com
+DOMAIN-SUFFIX,bntrace.com
 DOMAIN-SUFFIX,boardreader.com
 DOMAIN-SUFFIX,bod.asia
 DOMAIN-SUFFIX,bodog88.com
@@ -6052,6 +6055,7 @@ DOMAIN-SUFFIX,yigeni.com
 DOMAIN-SUFFIX,yilubbs.com
 DOMAIN-SUFFIX,yimg.com
 DOMAIN-SUFFIX,yingsuoss.com
+DOMAIN-SUFFIX,yingwangtech.cloud
 DOMAIN-SUFFIX,yinlei.org
 DOMAIN-SUFFIX,yipub.com
 DOMAIN-SUFFIX,yizhihongxing.com
