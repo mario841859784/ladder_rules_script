@@ -1,4 +1,4 @@
-#规则数量:632
+#规则数量:635
 #不支持的规则数量:0
 #已排除的规则数量:0
 
@@ -136,6 +136,7 @@ payload:
   - DOMAIN-SUFFIX,bytedance.net
   - DOMAIN-SUFFIX,bytedns.net
   - DOMAIN-SUFFIX,bytednsdoc.com
+  - DOMAIN-SUFFIX,bytefcdnrd.com
   - DOMAIN-SUFFIX,bytegoofy.com
   - DOMAIN-SUFFIX,byteimg.com
   - DOMAIN-SUFFIX,bytescm.com
@@ -202,6 +203,7 @@ payload:
   - DOMAIN-SUFFIX,eastday.com
   - DOMAIN-SUFFIX,eastmoney.com
   - DOMAIN-SUFFIX,ecitic.com
+  - DOMAIN-SUFFIX,edgesrv.com
   - DOMAIN-SUFFIX,ele.me
   - DOMAIN-SUFFIX,element-plus.org
   - DOMAIN-SUFFIX,epicgames.com
@@ -303,6 +305,7 @@ payload:
   - DOMAIN-SUFFIX,kaola.com
   - DOMAIN-SUFFIX,knewone.com
   - DOMAIN-SUFFIX,koowo.com
+  - DOMAIN-SUFFIX,koyso.com
   - DOMAIN-SUFFIX,ksosoft.com
   - DOMAIN-SUFFIX,kspkg.com
   - DOMAIN-SUFFIX,ksyun.com
