@@ -1,0 +1,244 @@
+proxy-groups:
+  - name: 🚀 PROXY
+    include-all: true
+    type: select
+
+  - name: ⭕️ 网络解限
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 PROXY
+      - ♻️ AUTO
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: 🌍 全球加速
+    type: select
+    proxies:
+      - ♻️ AUTO
+      - 🚀 PROXY
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+  
+  - name: 🎨 Figma
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 PROXY
+      - ♻️ AUTO
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: ✨ AIGC
+    type: select
+    proxies:
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: 🎬️ 港台番剧
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 PROXY
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+
+  - name: 🎬️ 国际媒体
+    type: select
+    proxies:
+      - ♻️ AUTO
+      - 🚀 PROXY
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 PROXY
+      - ♻️ AUTO
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: 🗑 兜底策略
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 PROXY
+      - ♻️ AUTO
+      - 🇭🇰 HK AUTO
+      - 🇨🇳 TW AUTO
+      - 🇸🇬 SG AUTO
+      - 🇯🇵 JP AUTO
+      - 🇺🇸 US AUTO
+
+  - name: ♻️ AUTO
+    include-all: true
+    type: url-test
+    interval: 300
+
+  - name: 🇭🇰 HK AUTO
+    include-all: true
+    filter: (?i)香港|Hong Kong|HK|🇭🇰
+    type: url-test
+    interval: 300
+
+  - name: 🇨🇳 TW AUTO
+    include-all: true
+    filter: (?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)
+    type: url-test
+    interval: 300
+    
+  - name: 🇸🇬 SG AUTO
+    include-all: true
+    filter: (?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)
+    type: url-test
+    interval: 300
+
+  - name: 🇯🇵 JP AUTO
+    include-all: true
+    filter: (?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)
+    type: url-test
+    interval: 300
+
+  - name: 🇺🇸 US AUTO
+    include-all: true
+    filter: (?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)
+    type: url-test
+    interval: 300
+
+
+rule-providers:
+  网络解限: 
+    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/yaml/unlockblock.yaml
+    path: ./ruleset/unlockblock.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+
+  直连修正: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Direct+.yaml
+    path: ./ruleset/Direct+.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  代理修正: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Proxy+.yaml
+    path: ./ruleset/Proxy+.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  LAN: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/LAN.yaml
+    path: ./ruleset/LAN.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  微信: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/WeChat.yaml
+    path: ./ruleset/WeChat.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  电报: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Telegram.yaml
+    path: ./ruleset/Telegram.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  AIGC: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/AI.yaml
+    path: ./ruleset/AI.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  港台番剧: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/StreamingCN.yaml
+    path: ./ruleset/StreamingCN.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  国际媒体: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Streaming!CN.yaml
+    path: ./ruleset/Streaming!CN.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  苹果服务: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Apple.yaml
+    path: ./ruleset/Apple.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  代理列表: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Proxy.yaml
+    path: ./ruleset/Proxy.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+  
+  直连列表: 
+    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Direct.yaml
+    path: ./ruleset/Direct.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+        
+rules:
+  - PROCESS-NAME,OneDrive,DIRECT
+  - DOMAIN-SUFFIX,notion.so,🗑 兜底策略
+  - DOMAIN-SUFFIX,metacubex.one,🌍 全球加速
+  - DOMAIN-SUFFIX,bocchi.site,🌍 全球加速
+  - DOMAIN-SUFFIX,ssysub.xyz,🌍 全球加速
+  - DOMAIN-SUFFIX,figma.com,🎨 Figma
+  - RULE-SET,直连修正,DIRECT
+  - RULE-SET,代理修正,🌍 全球加速
+  - RULE-SET,网络解限,⭕️ 网络解限
+  - RULE-SET,电报,🌍 全球加速
+  - RULE-SET,AIGC,✨ AIGC
+  - RULE-SET,港台番剧,🎬️ 港台番剧
+  - RULE-SET,国际媒体,🎬️ 国际媒体
+  - RULE-SET,苹果服务,🍎 苹果服务
+  - RULE-SET,代理列表,🌍 全球加速
+  - RULE-SET,微信,DIRECT
+  - RULE-SET,直连列表,DIRECT
+  - RULE-SET,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🗑 兜底策略
