@@ -223,6 +223,7 @@ rule-providers:
         
 rules:
   - PROCESS-NAME,OneDrive,DIRECT
+  - PROCESS-NAME,NeteaseMusic,⭕️ 网络解限
   - DOMAIN-SUFFIX,notion.so,🗑 兜底策略
   - DOMAIN-SUFFIX,metacubex.one,🌍 全球加速
   - DOMAIN-SUFFIX,bocchi.site,🌍 全球加速
