@@ -3,18 +3,6 @@ proxy-groups:
     include-all: true
     type: select
 
-  - name: ⭕️ 网络解限
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 PROXY
-      - ♻️ AUTO
-      - 🇭🇰 HK AUTO
-      - 🇨🇳 TW AUTO
-      - 🇸🇬 SG AUTO
-      - 🇯🇵 JP AUTO
-      - 🇺🇸 US AUTO
-
   - name: 🌍 全球加速
     type: select
     proxies:
@@ -125,14 +113,6 @@ proxy-groups:
 
 
 rule-providers:
-  网络解限: 
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Amnesiash/ladder_rules_script/main/Rules/Clash/yaml/unlockblock.yaml
-    path: ./ruleset/unlockblock.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http
-
   直连修正: 
     url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/Direct+.yaml
     path: ./ruleset/Direct+.yaml
@@ -223,7 +203,6 @@ rule-providers:
         
 rules:
   - PROCESS-NAME,OneDrive,DIRECT
-  - PROCESS-NAME,NeteaseMusic,⭕️ 网络解限
   - DOMAIN-SUFFIX,notion.so,🗑 兜底策略
   - DOMAIN-SUFFIX,metacubex.one,🌍 全球加速
   - DOMAIN-SUFFIX,bocchi.site,🌍 全球加速
@@ -231,7 +210,6 @@ rules:
   - DOMAIN-SUFFIX,figma.com,🎨 Figma
   - RULE-SET,直连修正,DIRECT
   - RULE-SET,代理修正,🌍 全球加速
-  - RULE-SET,网络解限,⭕️ 网络解限
   - RULE-SET,电报,🌍 全球加速
   - RULE-SET,AIGC,✨ AIGC
   - RULE-SET,港台番剧,🎬️ 港台番剧
