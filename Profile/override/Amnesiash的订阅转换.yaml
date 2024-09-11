@@ -129,13 +129,13 @@ rule-providers:
     format: yaml
     type: http
   
-  LAN: 
-    url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/LAN.yaml
-    path: ./ruleset/LAN.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http
+  # LAN: 
+  #   url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/LAN.yaml
+  #   path: ./ruleset/LAN.yaml
+  #   behavior: classical
+  #   interval: 86400
+  #   format: yaml
+  #   type: http
   
   微信: 
     url: https://mirror.ghproxy.com/https://github.com/Amnesiash/ladder_rules_script/raw/main/Rules/Clash/yaml/WeChat.yaml
