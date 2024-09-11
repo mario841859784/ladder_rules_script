@@ -203,10 +203,6 @@ rule-providers:
         
 rules:
   - PROCESS-NAME,OneDrive,DIRECT
-  - DOMAIN-SUFFIX,notion.so,🗑 兜底策略
-  - DOMAIN-SUFFIX,metacubex.one,🌍 全球加速
-  - DOMAIN-SUFFIX,bocchi.site,🌍 全球加速
-  - DOMAIN-SUFFIX,ssysub.xyz,🌍 全球加速
   - DOMAIN-SUFFIX,figma.com,🎨 Figma
   - RULE-SET,直连修正,DIRECT
   - RULE-SET,代理修正,🌍 全球加速
@@ -218,6 +214,13 @@ rules:
   - RULE-SET,代理列表,🌍 全球加速
   - RULE-SET,微信,DIRECT
   - RULE-SET,直连列表,DIRECT
-  - RULE-SET,LAN,DIRECT
+  # - RULE-SET,LAN,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,fe80::/10,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🗑 兜底策略
