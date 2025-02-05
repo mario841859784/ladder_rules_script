@@ -1,12 +1,12 @@
 +rules:
-  # - DOMAIN-SUFFIX,notion.so,🗑 兜底策略
-  - DOMAIN-SUFFIX,metacubex.one,🌍 全球加速
-  - DOMAIN-SUFFIX,bocchi.site,🌍 全球加速
-  - DOMAIN-SUFFIX,ssy61.com,🌍 全球加速
-  - DOMAIN-SUFFIX,sakuracat-b.com,🌍 全球加速
-  - DOMAIN-SUFFIX,v2.antlink.cc,🌍 全球加速
-  - PROCESS-NAME,HeavenBurnsRed.exe,🇭🇰 香港优选
-  - PROCESS-NAME,VirtualDesktop.Streamer.exe,🌍 全球加速
-  - PROCESS-NAME,VRChat.exe,🌍 全球加速
-  - DOMAIN-SUFFIX,api-ap.heaven-burns-red.wfs.games,🇭🇰 香港优选
-  - PROCESS-NAME,hanime1.me,🌍 全球加速
+  # - DOMAIN-SUFFIX,notion.so,兜底策略
+  - DOMAIN-SUFFIX,metacubex.one,全球加速
+  - DOMAIN-SUFFIX,bocchi.site,全球加速
+  - DOMAIN-SUFFIX,ssy61.com,全球加速
+  - DOMAIN-SUFFIX,sakuracat-b.com,全球加速
+  - DOMAIN-SUFFIX,v2.antlink.cc,全球加速
+  - PROCESS-NAME,HeavenBurnsRed.exe,香港优选
+  - PROCESS-NAME,VirtualDesktop.Streamer.exe,全球加速
+  - PROCESS-NAME,VRChat.exe,全球加速
+  - DOMAIN-SUFFIX,api-ap.heaven-burns-red.wfs.games,香港优选
+  - PROCESS-NAME,hanime1.me,全球加速
