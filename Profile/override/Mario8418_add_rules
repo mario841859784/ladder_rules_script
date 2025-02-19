@@ -5,10 +5,10 @@
   - DOMAIN-SUFFIX,ssy61.com,全球加速
   - DOMAIN-SUFFIX,sakuracat-b.com,全球加速
   - DOMAIN-SUFFIX,v2.antlink.cc,全球加速
-  - PROCESS-NAME,HeavenBurnsRed.exe,香港优选
+  - PROCESS-NAME,HeavenBurnsRed.exe,节点选择
   - PROCESS-NAME,VirtualDesktop.Streamer.exe,全球加速
   - PROCESS-NAME,VRChat.exe,全球加速
-  - DOMAIN-SUFFIX,api-ap.heaven-burns-red.wfs.games,香港优选
+  - DOMAIN-SUFFIX,api-ap.heaven-burns-red.wfs.games,节点选择
   - DOMAIN-SUFFIX,hanime1.me,全球加速
   - DOMAIN-SUFFIX,missav.ws,全球加速
   - DOMAIN-SUFFIX,nhentai.net,全球加速
